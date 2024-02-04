@@ -136,9 +136,9 @@ $ sudo docker restart portainer
 
 # Joining a WiFi Access Point
 
-https://www.portainer.io/blog/root-console-to-a-host-via-portainer
+SSH into the MK12 device and enter the following:
 
-sudo raspi-config
+$ sudo raspi-config
 
 Using the arrow keys, navigate to: 1 - System Options, S1 - Wireless LAN
 
@@ -148,9 +148,15 @@ Enter the new SSID, navigate to the OK tab with the arrow keys and press enter, 
 
 SSH into the device and enter the following:
 
-$ sudo nmcli con mod "Wired connection 1" ipv4.method manual ipv4.addr 192.168.XXX.YYY/24
+$ sudo nmcli con mod "Wired connection 1" ipv4.method manual ipv4.addr "192.168.XXX.YYY/24"
 
 where XXX.YYY represent the specific ip address and subnet you wish the device to have, e.g 192.168.50.102
+
+The speach marks are part of the syntax, enter the above as it is typed out!
+
+The system must be rebooted for the changes to take effect - 
+
+$ sudo reboot now
 
 
 # Adding Additional Sensors / Software
