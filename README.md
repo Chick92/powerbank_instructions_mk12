@@ -1,5 +1,5 @@
 
-![alt text](mk12_on.jpg "MK12 Smart PoE Powerbank")
+![alt text](MK12_front.jpg "MK12 Smart PoE Powerbank")
 
 # Specifications
 
@@ -14,11 +14,13 @@
 - 10/100 Ethernet switch, 3 ports accessible to user
 - Designed for Rajant Cardinal
 
-# CE and UKCA Certificates
+# CE Certificates
 
 https://chick92.github.io/powerbank_instructions_mk12/CE_MK12.pdf
 
-https://chick92.github.io/powerbank_instructions_mk12/UKCA_MK12.pdf
+# MSDS
+
+https://chick92.github.io/powerbank_instructions_mk12/MSDS.pdf
 
 # Risk Assessment
 
@@ -26,7 +28,7 @@ https://chick92.github.io/powerbank_instructions_mk12/Risk_Assessment_usage_mk12
 
 # Document Nomenclature
 
-Any commands that must be entered in the termnal, which are written in this document will start with a $ symbol. 
+Any commands that must be entered in the terminal, which are written in this document will start with a $ symbol. 
 
 $ ssh pbng@10.42.0.184
 
@@ -36,9 +38,9 @@ This command should be copied into a terminal window, without the $ symbol.
 
 ##### Mounting Rajant Cardinal
 
-The MK-12 Smart PoE Powerbank is designed to have a Rajant Cardinal mounted to it's top surface, using 2x M6x25 mm bolts. The included 15cm Ethernet cable should be used with the Cardinal. This cable is to be inserted into the RJ45 jack on the side of the powerbank, which is marked "Rajant", ran over the top of the unit and plugged into the Cardinal's RJ45 recepticle.
+The MK-12 Smart PoE Powerbank is designed to have a Rajant Cardinal mounted to it's top surface, using the included 2x M6x25 mm bolts. The included 15cm Ethernet cable should be used with the Cardinal. This cable is to be inserted into the RJ45 jack on the side of the powerbank, which is marked "Rajant", ran over the top of the unit and plugged into the Cardinal's RJ45 recepticle.
 
-![alt text](mk12_prototype_top.jpg "Mounting the Rajant Cardinal")
+![alt text](MK12_front_left.jpg "Mounting the Rajant Cardinal")
 
 ##### Connecting peripheral tablets / computers
 
@@ -54,7 +56,7 @@ The MK12  can also be connected to existing WiFi networks as a new client. This 
 The MK-12 has a built in webserver that can be used to interrogate the device for Network IP addresses, battery state and to control the built in lighting system.
 
 
-![alt text](mk12_webserver.png "Webserver")
+![alt text](MK12_Powerbank/powerbank_instructions_mk12/mk12_webserver.png "Webserver")
 
 
 To access it, use a browser on a device that is on the same LAN (Rajant, Ethernet or WiFi) and enter the device IP address into your browsers search bar. The Ethernet IP address of the MK-12 is displayed on the front mounted OLED screen.
@@ -85,22 +87,32 @@ Where WWW.XXX.YYY.ZZZ is the ip address of the MK-12
 
 ##### Power on and power off
 
-To power off the MK-12, press and hold the safe shutdown button on the side of the unit for 4 seconds. When a safe shutdown has been initiated, the display will stop updating and the lamp will light up for 3 seconds before switching off again. 
+To power off the MK-12, press and hold the safe shut down button for 1-2 seconds, 3 times, with a 1-2 second pause between. After a 5-10 seconds the display will stop updating and the lamp will light up.
 
 You can then press the power button on the other side of the device to disconnect power to the system.
+
+![alt text](MK12_side.jpg "side of device with power switch")
 
 
 ##### Charging the device
 
 To charge the MK-12, connect the provided charger to the charge input on the rear of the device.
 
-![alt text](4s_charger.jpg "Charger")
+The provided charger is suitable for world wide application, and has different connectors to suit the AC outlet in your region.
+
+![alt text](charger.jpg "Charger")
 
 DO NOT operate the device whilst it is charging. 
 
 Once connected, the charging LED on the charger will flash green. When complete, it will be solid green. Should any faults be detected, the fault LED will light up red.
 
+![alt text](pb_charging.jpg "Plugging in the chargerr")
 
+To change the AC outlet connector, depress the catch with a tool such as a screw driver and slide the connector off, and replace with the one suitable for your region.
+
+![alt text](charger_removing_prongs.jpg "Removing prongs")
+
+![alt text](charger_naked.jpg "Naked charger")
 # SSH'ing Into Device
 
 To SSH into the MK12 device, open a terminal and type the following:
@@ -194,7 +206,7 @@ Nmap is a network scanning utility that is installed on the MK-12. It can be acc
 
 To map the Ethernet network for example, enter the following:
 
-$ nmap 192.168.X*
+$ nmap 192.168.X.*
 
 Where X is the subnet, e.g if the MK-12 has an Ethernet IP address of 192.168.1.201, you would enter $ nmap 192.168.1.*
 
