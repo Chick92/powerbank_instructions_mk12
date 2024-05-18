@@ -26,6 +26,10 @@ https://chick92.github.io/powerbank_instructions_mk12/MSDS.pdf
 
 https://chick92.github.io/powerbank_instructions_mk12/Risk_Assessment_usage_mk12_powerbank.pdf
 
+# Export Tariff Code
+
+HS  85177900
+
 # Document Nomenclature
 
 Any commands that must be entered in the terminal, which are written in this document will start with a $ symbol. 
