@@ -1,6 +1,19 @@
 
 ![alt text](MK12_front.jpg "MK12 Smart PoE Powerbank")
 
+The OSE Smart PoE Powerbank is an edge compute unit designed to both power and compliment the Rajant intelligent mesh network. The Smart PoE Powerbank allows the user to deploy a Rajant mesh network in environments where AC wall power is not available (provides power and networking to the Rajant), and allows the user to integrate additional sensors onto the Rajant network through its USB or Ethernet interface.  
+
+The Smart PoE Powerbanks run a local webserver (i.e a webserver is hosted on each powerbank) that can be accessed over the Rajant network. This enables the user to interrogate the battery status of each powerbank that is deployed in situ, without having to physically access them. Each Smart PoE Powerbank also has an OLED display which gives the user battery and networking information at a glance. 
+
+The Smart PoE Powerbank is available with a Radeye DAQ (Data Acquisition) software license that enables it to log doserate and total absorbed dose from a connected Radeye G10 or G10X. The user can use the Rajant network to access this information remotely.  
+
+The Smart PoE Powerbanks are designed to be deployed in situ by spot. If the user has a Boston Dynamics Spot robot with manipulator arm, the Smart PoE Powerbank / Rajant combination can be carried by the manipulator arm into the environment. This allows the user to set up adhoc Rajant networks without having to physically go into the environment. For dangerous environments such as nuclear, where there is a contamination or dose rate factor, this adds to the safety case and reduces the potential for operator dose rate uptake. 
+
+The Smart PoE Powerbank is designed to operate both as Rajant power supply for Rajant nodes deployed in situ (and any other sensor accessories that the user wishes to use such as Radeye G10), and as part of a base station. The Smart PoE Powerbank features an ethernet switch that allows the user to connect computers and the spot table to, in order to access the Rajant / robot network.
+
+The MK12 Smart PoE Powerbank also features an onboard 120 degree FOV camera which can be used with DVR systems on the Rajant network, or indeed computer applications, as well as a lamp that can be controlled by the webserver. These features enable the MK12 Smart PoE Powerbank to be used to provide a third person view of the environment for BVLOS (Beyond Visual Line of Site) robotic operations.  
+
+Optionally, the Smart PoE Powerbank can be specified with an optional Radeye DAQ software license (includes Radeye data cable), allowing the Smart PoE Powerbank to function as a Rajant network connected data collection device. When a Thermo Fisher Radeye G10 is connected, the user can access the live dose rate and total accumulated dose of the connected radeye. This is useful for remote, adhoc situation monitoring and for tracking the absorbed dose of the Rajant / Powerbank combination.  This license is perpetual, there is no end date.
 # Specifications
 
 - 74 Wh battery capacity, giving ~14 hour battery life with Rajant Cardinal
@@ -164,15 +177,21 @@ Enter the new SSID, navigate to the OK tab with the arrow keys and press enter, 
 
 SSH into the device and enter the following:
 
-$ sudo nmcli con mod "Wired connection 1" ipv4.method manual ipv4.addr "192.168.XXX.YYY/24"
+$ sudo nmcli con mod "Wired connection 1" ipv4.method manual ipv4.addr "192.168.XXX.YYY/24" ipv4.gateway "192.168.1.254" ipv4.dns “8.8.8.8”
 
 where XXX.YYY represent the specific ip address and subnet you wish the device to have, e.g 192.168.50.102
 
+The DNS used is Google's DNS, and the gateway IP address will be that of your network router. Typically this is 192.168.XXX.1 or 192.168.XXX.254.
+
 The speach marks are part of the syntax, enter the above as it is typed out!
 
-The system must be rebooted for the changes to take effect - 
+The system must either be rebooted for the changes to take effect - 
 
 $ sudo reboot now
+
+Or, you can restart just the networking - 
+
+$ nmcli con up "Wired connection 1"
 
 
 # Adding Additional Sensors / Software
