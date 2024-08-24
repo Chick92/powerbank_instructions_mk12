@@ -113,6 +113,58 @@ You can then press the power button on the other side of the device to disconnec
 
 ##### Charging the device
 
+Depending on the equipment purchased, the Powerbank will come with one of two chargers - an RS charger, or if you have purchased both a UGV and smart PoE Powerbanks, an ISDT charger. 
+
+###### ISDT charger
+
+
+Do not attempt to charge the MK12 Smart PoE Powerbank whilst it is powered on.
+
+The charging input is NOT isolated from the battery, do not attempt to connect third party devices to this port as they will draw power even when the device is turned off. 
+
+Charge time depends on initial state of charge (SoC), however 10\% initial SoC to 80\% SoC will take approximately 1.5 hours. 
+
+It is recommended to store the smart PoE Powerbank for extended periods of time with a battery charge state of around 50\%. It is also recommended to not operate the Smart PoE Powerbank below a 20\% battery state of charge, in order to prolong battery lifespan.
+
+The charger is an ISDT 608PD, chosen for its small form factor and USB C power input. Depending on your region, the included power supply will be either a UGREEN Nexode Pro or Anker Series 7 USB C brick. It is recommended that the user reads the included instructions of both these devices separately before use.
+
+If using the UGREEN Nexode Pro, first connect the correct AC adapter to it, as shown below:
+
+![alt text](charger_plug.jpg "Nexode Pro AC adaptor")
+![alt text](charger_plug_2.jpg "Nexode pro")
+Plug the USB C brick into the AC outlet and connect the ISDT charger to it using the included USB C cable. The Power input on the ISDT charger is located at the top of the unit. If using the UGREEN Nexode Pro, connect the USB C cable to the port on the right hand side - USB C1 as shown below. There is only a single USB C port on the Anker Series 7.
+
+![alt text](charger_C1.jpg "Nexode pro USB C")
+
+![alt text](charger_usbC.jpg "Nexode USB C1")
+
+![alt text](IDST_USBC.jpg "USB C ISDT")
+Next connect the XT60 connector of the DC charging cable to the XT60 port on the bottom of the ISDT charger, and connect the DC barrel jack to the port on the rear of the Smart PoE Powerbank, as shown below, when connected the ISDT charger will display the input voltage and power from the USB C Power supply brick (20V, 65W for the Nexode Pro and 20V 65W for the Series 7) and the battery voltage of the connected device's battery (between 12V and 16.8V):
+
+![alt text](charger_XT60.jpg "XT60 ISDT")
+
+![alt text](ISDT_charger.jpg "ISDT")
+
+![alt text](ISDT_mk12.jpg "ISDT charge input")
+![alt text](UGV_DC_jack.jpg "UGV charge input")
+The ISDT charger will arrive pre configured for use with the Powerbanks and UGV. To start charging, long press the center button until the display changes to the charging menu:
+
+![alt text](IDST_charge_menu.jpg "Charging menu")
+
+
+Then short press the center button to begin charging. The charger will ask you if you wish to perform an unbalanced charge. press the right button to confirm, as the UGV battery and Powerbank battery handles balancing via the built in BMS (Battery Management System). 
+
+![alt text](IDST_balance.jpg "Perfrom unbalanced charge")
+
+The charger will now charge the Powerbank or UGV. The USB C power supply brick can get hot under load, do not touch it. Do not charge the UGV or powerbank unattended!
+
+![alt text](IDST_charging.jpg "Charging")
+
+If you wish to adjust the charging current used, you can set this before charging by long pressing the centre button within the charging menu. The parameter that flashes will be altered with the left and right buttons. Short press the centre button to cycle through them.
+
+DO NOT change LiPo, 4S or 4.20V. This is the cell chemistry - LiPo, cell configuration - 4S and cell mav voltage - 4.20V. The charge current can be adjusted from 1A to 3A. It is best to leave it on 3A for speed of charging. If you are using a single ISDT charger for both powerbanks and the UGV, set this to 2A.
+###### RS charger
+
 To charge the MK-12, connect the provided charger to the charge input on the rear of the device.
 
 The provided charger is suitable for world wide application, and has different connectors to suit the AC outlet in your region.
