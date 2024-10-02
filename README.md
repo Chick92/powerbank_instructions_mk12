@@ -24,6 +24,8 @@ Optionally, the Smart PoE Powerbank can be specified with an optional Radeye DAQ
 - [Quick Start](#quick-start)
         - [Mounting Rajant Cardinal](#mounting-rajant-cardinal)
         - [Connecting peripheral tablets / computers](#connecting-peripheral-tablets--computers)
+          - [Ethernet](#ethernet)
+          - [Joining via the Rajant WiFi AP](#joining-via-the-rajant-wifi-ap)
         - [Accessing and using the device status webserver](#accessing-and-using-the-device-status-webserver)
         - [Accessing the video stream from the camera](#accessing-the-video-stream-from-the-camera)
         - [Power on and power off](#power-on-and-power-off)
@@ -84,13 +86,77 @@ The MK-12 Smart PoE Powerbank is designed to have a Rajant Cardinal mounted to i
 
 ##### Connecting peripheral tablets / computers
 
+###### Ethernet
+
 The MK12 has a built in 10/100 Ethernet network switch, of which 3 ports are exposed to the user (a further 4th port is used for the MK12's computer, and a 5th port is unused but is available for bespoke use). Of the 3 ports that are exposed to the user, one is a passive PoE port that can be used to power a Rajant Cardinal (or indeed ES1 or DX2 etc), or other device which can be powered by passive PoE (14.8V nominal).
 
 To add devices to the Rajant ethernet LAN, simply connect to the switch ports marked Eth0 and Eth1.
 
 The MK12  can also be connected to existing WiFi networks as a new client. This is discussed in the section "Joining WiFi Access Points".
 
+###### Joining via the Rajant WiFi AP
 
+For a cleaner setup, you may wish to take advantage of the Rajant's built in AP function. When this is set up, one of the radios on the Rajant will simultaneously act as a WiFi AP along with it's mesh functionality. Setting this up is beyond the scope of this document, however it is likely that if you have purchased Rajants and Powerbanks in combination from a distributor, one of them will be configured in this manner. 
+
+There is no DHCP server on the network, therefore when joining the WiFi AP, you will have to specify an IP address for the device you are using. 
+
+If you are using this system with an OSE UGV, the IP address should be on the .1 subnet. OSE recommends that the UGV tablet be set up with the IP address of 192.168.1.66, and a laptop should have the IP address 192.168.1.77.
+
+If you are using this system with a Boston Dynamics Spot robot, the IP address should be on the .50 subnet. OSE recommends that the Spot tablet be set up with the IP address of 192.168.50.66, and a laptop should have the IP address 192.168.50.77.
+
+Laptop (Ubuntu)
+
+Go to system settings, and then WiFi. Click on the gear icon next to the Rajant AP name.
+
+![alt text](rajatAP1_laptop.png "Rajant AP wifi config")
+
+Click on the IPv4 tab.
+
+![alt text](rajatAP2_laptop.png "Rajant AP wifi config")
+Select manual, and then input the following values:
+
+Address: 192.168.X.77 (where X is either 1 for UGV, or 50 for Spot)
+Netmask: 255.255.255.0
+Gateway: 192.168.X.1 (where X is either 1 for UGV, or 50 for Spot)
+
+You do not need to enter anything for DNS or alternate routes. 
+
+![alt text](rajatAP3_laptop.png "Rajant AP wifi config")
+
+Then click the Security tab, and enter the password for the Rajant AP (this will be listed on the device if it is set up). Then click apply and your computer will join the network.
+
+![alt text](rajatAP4_laptop.png "Rajant AP wifi config")
+
+You may need to double click on the rajant AP in the wifi settings to actually join the network.
+
+![alt text](rajatAP5_laptop.png "Rajant AP wifi config")
+
+Tablet
+
+Go to the settings application on the home screen, and click "Connections"
+![alt text](rajantAP6_tablet.jpg "Rajant AP wifi config")
+
+Click on the Rajant WiFi AP, and then click "view more". Do this BEFORE you put in a password.
+
+![alt text](rajantAP7_tablet.jpg "Rajant AP wifi config")
+
+Address: 192.168.X.66 (where X is either 1 for UGV, or 50 for Spot)
+Netmask: 24
+Gateway: 192.168.X.1 (where X is either 1 for UGV, or 50 for Spot)
+DNS 1: 8.8.8.8
+DNS 2: 8.8.4.4
+
+![alt text](rajantAP8_tablet.jpg "Rajant AP wifi config")
+
+Scroll back up and enter the password for the Rajant AP (this will be listed on the device if it is set up). Then click connect.
+
+![alt text](rajantAP9_tablet.jpg "Rajant AP wifi config")
+After a few seconds the tablet will flash up a warning that internet is not available. click "Always connect".
+
+![alt text](rajantAP10_tablet.jpg "Rajant AP wifi config")
+The tablet will now be connected to the Rajant WiFi AP.
+
+![alt text](rajantAP11_tablet.jpg "Rajant AP wifi config")
 ##### Accessing and using the device status webserver
 
 The MK-12 has a built in webserver that can be used to interrogate the device for Network IP addresses, battery state and to control the built in lighting system.
